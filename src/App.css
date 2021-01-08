@@ -1,3 +1,13 @@
-h1{
+*{
+  background-color: whitesmoke;
+}
+
+.title{
   text-align: center;
+}
+
+.container{
+  padding: 30px;
+  margin: 0 auto;
+  max-width: 1000px;
 }
