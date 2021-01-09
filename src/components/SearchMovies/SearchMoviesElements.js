@@ -25,6 +25,7 @@ cursor: pointer;
 outline: none !important;
 background: rgba(0,0,0,0.5);
 color: #fff;
+margin: 5px;
 box-shadow: 2px 5px 9px rgba(0,0,0,0.5);
 :hover{
     background: rgba(0,0,0,0.8);
