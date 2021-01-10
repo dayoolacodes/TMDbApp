@@ -6,6 +6,12 @@ margin: 5%;
 border: 0 solid rgba(0,0,0, 0.5);
 border-radius: 20px;
 box-shadow: 3px 2px 6px #cecece;
+background: whitesmoke;
+
+:hover{
+    transform: scale(1.05);
+    transition: 0.5s ease;
+}
 ` 
 
 export const Select = styled.select`
@@ -17,5 +23,5 @@ cursor: pointer;
 `
 export const SelectWrapper = styled.div`
 display: flex;
-justify-content: flex-end;
+justify-content: space-evenly;
 `

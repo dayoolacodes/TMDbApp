@@ -5,8 +5,8 @@ import { Container } from '../../NowplayingElements';
 const RecommendedMovies = ({recommendedMovies, handleAbtMov}) => {
     return ( 
     <>
-    {recommendedMovies.results.length>0? <h2>Recommended Movies</h2>: <h2>Check Back for Recommended Movies</h2>}
-    {console.log(recommendedMovies, " in recommended")}
+    {recommendedMovies.results.length>0? <h2>Recommended Movies</h2>: <h2> No Recommended Movies for this Movie</h2>}
+    {/* {console.log(recommendedMovies, " in recommended")} */}
     {recommendedMovies.results.map((movie) => {
                     return (
                     <Container key={movie.id} onClick={() => handleAbtMov(movie)}>
