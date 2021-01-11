@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-
-import {
-  LinkR,
-  LinkWrapper,
-} from "../AboutMovie/AboutMovieElements";
-import { Container } from "../Nowplaying/NowplayingElements";
+import { Container, LinkR, LinkWrapper } from "./../styledElements";
 
 const Favorites = ({ favMovie, handleSetClickedMovie, handleDeleteFav }) => {
   const favoriteMovies = [...favMovie];

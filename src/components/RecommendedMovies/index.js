@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container } from "../Nowplaying/NowplayingElements";
+import { Container } from "./../styledElements";
 
 const RecommendedMovies = ({ recommendedMovies, handleAbtMov }) => {
   return (

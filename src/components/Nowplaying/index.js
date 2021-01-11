@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Container, Select, SelectWrapper } from "./NowplayingElements";
+import { Select, SelectWrapper } from "./NowplayingElements";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
+import { Container } from "../styledElements";
 
 const Nowplaying = ({ movies, handleSetClickedMovie, handleFavMovie }) => {
   const [order, setOrder] = useState(true);

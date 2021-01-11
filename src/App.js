@@ -1,16 +1,17 @@
-import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import AboutMovie from "./components/AboutMovie";
 import { useEffect, useState } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {
   Button,
   Form,
   Input,
-} from "./components/SearchMovies/SearchMoviesElements";
-import { LinkR } from "./components/AboutMovie/AboutMovieElements";
-import Favorites from "./components/FavoritesMovies";
+} from "./components/styledElements";
+import AboutMovie from "./components/AboutMovie";
+import Favorites from "./components/FavoriteMovies";
 import SearchMovies from "./components/SearchMovies";
 import Nowplaying from "./components/Nowplaying";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -23,6 +24,7 @@ function App() {
 
   const baseUrl = "https://api.themoviedb.org/3/movie/";
   const apiKey = "a5babee5a188ccf49db8c5cad0da7bf6";
+  
 
   useEffect(() => {
     async function fetchNowplayingMovies() {
@@ -48,7 +50,7 @@ function App() {
       }
     }
     fetchNowplayingMovies();
-  }, [query]);
+  }, [query, clickedMovie]);
 
   const handleFavMovie = (m) => {
     const newFavMovie = [...favMovie, m];
@@ -78,27 +80,11 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <div className="title">
-          <LinkR to="/">
-            <h1> TMDb App</h1>
-          </LinkR>
-          <Link to="/favorites">
-            <span
-              style={{
-                border: "0.5px solid #e4e5e9",
-                fontWeight: "normal",
-                borderRadius: "10px",
-                padding: "5px",
-              }}
-            >
-              My Favourites
-            </span>
-          </Link>
-        </div>
+
+        <Header />
 
         <Switch>
           <Route path="/favorites">
-            {/* {console.log(favMovie)} */}
             <Favorites
               favMovie={favMovie}
               setClickedMovie={setClickedMovie}
@@ -128,7 +114,8 @@ function App() {
               />
 
               {searchedMovies.length > 0 ? (
-                <Button onClick={() => window.location.reload()}>
+                <Button 
+                onClick={() => window.location.reload()}>
                   Cancel Search
                 </Button>
               ) : (
@@ -148,10 +135,8 @@ function App() {
             />
           </Route>
         </Switch>
-        <p style={{ textAlign: "center", color: "#cecece" }}>
-          {" "}
-          Dayoola &#169; 2021
-        </p>
+
+        <Footer />
       </div>
     </Router>
   );

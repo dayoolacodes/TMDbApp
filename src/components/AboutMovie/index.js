@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
-import { LinkR, LinkWrapper } from "./AboutMovieElements";
+import { LinkR, LinkWrapper } from "./../styledElements";
 import Rating from "../Ratings";
 import RecommendedMovies from "../RecommendedMovies";
 
@@ -15,10 +15,12 @@ const AboutMovie = ({ movie, genreList, handleFavMovie, apiKey, baseUrl }) => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchUrl = async () => {
       const url = `${baseUrl}${abtMov.id}/credits?api_key=${apiKey}`;
       const res = await fetch(url);
       const data = await res.json();
+      
       setActors({ data });
 
       const recommendedMoviesFetch = `${baseUrl}${abtMov.id}/recommendations?api_key=${apiKey}&language=en-US&page=1`;

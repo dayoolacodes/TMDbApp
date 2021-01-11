@@ -1,8 +1,7 @@
 import React from "react";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Container } from "../Nowplaying/NowplayingElements";
-
+import { Container } from "./../styledElements";
 
 const SearchMovies = ({
   searchedMovies,
@@ -35,7 +34,7 @@ const SearchMovies = ({
             <p style={{ textAlign: "center" }}>
               <b onClick={() => handleFavMovie(movie)}>
                 {" "}
-                <FaHeart /> Add Fav
+                <FaHeart color={"red"} /> Add to Favorite{" "}
               </b>
             </p>
           </Container>
