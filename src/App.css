@@ -5,12 +5,20 @@
 .title{
   text-align: center;
   margin: 10px auto;
-  color: #EA8B20;
+  
+}
+
+h1{
+color: #EA8B20;
 }
 
 .container{
   padding: 30px;
   margin: 0 auto;
   max-width: 1000px;
+}
+
+.w-6{
+  width: 25px;
 }
 

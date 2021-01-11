@@ -1,22 +1,19 @@
 import React from "react";
-import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Container } from "../Nowplaying/NowplayingElements";
 
-
-const SearchMovies = ({
-  searchedMovies,
-  handleSetClickedMovie,
-  handleFavMovie,
-}) => {
+const RecommendedMovies = ({ recommendedMovies, handleAbtMov }) => {
   return (
     <>
-      {searchedMovies.map((movie) => {
+      {recommendedMovies.results.length > 0 ? (
+        <h2>Recommended Movies</h2>
+      ) : (
+        <h2> No Recommended Movies for this Movie</h2>
+      )}
+      
+      {recommendedMovies.results.map((movie) => {
         return (
-          <Container
-            key={movie.id}
-            onClick={() => handleSetClickedMovie(movie)}
-          >
+          <Container key={movie.id} onClick={() => handleAbtMov(movie)}>
             <Link to="/about">
               <img
                 src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
@@ -32,12 +29,6 @@ const SearchMovies = ({
             <p>
               <b>Vote Average:</b> {movie.vote_average}
             </p>
-            <p style={{ textAlign: "center" }}>
-              <b onClick={() => handleFavMovie(movie)}>
-                {" "}
-                <FaHeart /> Add Fav
-              </b>
-            </p>
           </Container>
         );
       })}
@@ -45,4 +36,4 @@ const SearchMovies = ({
   );
 };
 
-export default SearchMovies;
+export default RecommendedMovies;
