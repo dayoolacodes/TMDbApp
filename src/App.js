@@ -27,21 +27,26 @@ function App() {
   
 
   useEffect(() => {
+     let controller = new AbortController();
     async function fetchNowplayingMovies() {
       try {
         const url = `${baseUrl}now_playing?api_key=${apiKey}&language=en-US&page=1`;
-        const res = await fetch(url);
+        const res = await fetch(url, { signal: controller.signal });
         const data = await res.json();
         setMovies(data.results);
 
         const getGenreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-        const genreRes = await fetch(getGenreUrl);
+        const genreRes = await fetch(getGenreUrl, {
+          signal: controller.signal
+        });
         const genreData = await genreRes.json();
         setGenreList(genreData);
 
         const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=1&include_adult=false`;
         if (query) {
-          const searchRes = await fetch(searchUrl);
+          const searchRes = await fetch(searchUrl, {
+            signal: controller.signal
+          });
           const searchedData = await searchRes.json();
           setSearchedMovies(searchedData.results);
         }
@@ -50,6 +55,10 @@ function App() {
       }
     }
     fetchNowplayingMovies();
+
+    return ()=> {
+      controller.abort();
+    }
   }, [query, clickedMovie]);
 
   const handleFavMovie = (m) => {
@@ -84,7 +93,7 @@ function App() {
         <Header />
 
         <Switch>
-          <Route path="/favorites">
+          <Route path="/favorites" >
             <Favorites
               favMovie={favMovie}
               setClickedMovie={setClickedMovie}
@@ -93,17 +102,19 @@ function App() {
             />
           </Route>
 
-          <Route path="/about">
-            <AboutMovie
-              movie={clickedMovie}
-              genreList={genreList}
-              handleFavMovie={handleFavMovie}
-              baseUrl={baseUrl}
-              apiKey={apiKey}
-            />
+          <Route path="/about" >
+            
+              <AboutMovie
+                movie={clickedMovie}
+                genreList={genreList}
+                handleFavMovie={handleFavMovie}
+                baseUrl={baseUrl}
+                apiKey={apiKey}
+              />
+          
           </Route>
 
-          <Route path="/">
+          <Route path="/" >
             <Form>
               <Input
                 type="text"
@@ -135,7 +146,6 @@ function App() {
             />
           </Route>
         </Switch>
-
         <Footer />
       </div>
     </Router>

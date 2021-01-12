@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, LinkR, LinkWrapper } from "./../styledElements";
+import { Container, LinkR} from "./../styledElements";
 
 const Favorites = ({ favMovie, handleSetClickedMovie, handleDeleteFav }) => {
   const favoriteMovies = [...favMovie];
@@ -59,10 +59,6 @@ const Favorites = ({ favMovie, handleSetClickedMovie, handleDeleteFav }) => {
           </Container>
         );
       })}
-
-      <LinkWrapper>
-        <LinkR to="/">Go Back Home</LinkR>
-      </LinkWrapper>
     </>
   );
 };
