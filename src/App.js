@@ -62,15 +62,18 @@ function App() {
   }, [query, clickedMovie]);
 
   const handleFavMovie = (m) => {
+    let newMovieAdded = true
     const newFavMovie = [...favMovie, m];
     // eslint-disable-next-line array-callback-return
     Object.values(favMovie).map((e) => {
       if (e.id === m.id) {
+        newMovieAdded = false
         newFavMovie.pop();
         alert("movie already in favorites");
       }
     });
-
+    if(newMovieAdded)
+    alert("movie added to favorites");
     setFavMovie(newFavMovie);
     setClickedFav(!clickedFav);
   };
@@ -83,6 +86,7 @@ function App() {
     const filteredMovie = favMovie.filter((e) => {
       return e.id !== movie.id;
     });
+    alert("movie deleted!");
     setFavMovie(filteredMovie);
   };
 
