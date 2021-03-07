@@ -46,6 +46,8 @@ export const Container = styled.div`
   box-shadow: 3px 2px 6px #cecece;
   background: whitesmoke;
   transition: 0.9s ease;
+  text-align: center;
+
 
   :hover {
     transform: scale(1.05);

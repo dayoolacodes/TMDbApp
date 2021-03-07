@@ -43,7 +43,7 @@ const Rating = ({ movie, baseUrl, apiKey }) => {
               postRating(e);
             }}
           />
-          <FaStar color={e <= ratingVal ? "#EA8B20" : "gray"} />
+          <FaStar color={e <= ratingVal ? "#EA8B20" : "gray"} style={{cursor: "pointer"}} />
         </label>
       ))}
     </>

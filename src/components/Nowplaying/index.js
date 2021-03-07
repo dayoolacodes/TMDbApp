@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Select, SelectWrapper } from "./NowplayingElements";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
@@ -36,28 +36,31 @@ const Nowplaying = ({ movies, handleSetClickedMovie, handleFavMovie }) => {
             key={movie.id}
             onClick={() => handleSetClickedMovie(movie)}
           >
+          <div style={{display:"flex", justifyContent:"center"}}>
+
             <Link to="/about">
               <img
-                src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                src={undefined ?? `https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
                 alt={`${movie.title}_img`}
-              />
+                />
             </Link>
+                </div>
             <p>
-              <b>Title:</b> {movie.title}
+              <strong>Title:</strong> {movie.title}
             </p>
             <p>
-              <b>Release Date:</b> {movie.release_date}
+              <strong>Release Date:</strong> {movie.release_date}
             </p>
             <p>
-              <b>Vote Average:</b> {movie.vote_average}
+              <strong>Vote Average:</strong> {movie.vote_average}
             </p>
             <p
               style={{ textAlign: "center" }}
               onClick={() => handleFavMovie(movie)}
             >
-              <b>
+              <strong style={{cursor:"pointer"}}>
                 <FaHeart color={"red"} /> Add to Favorite{" "}
-              </b>
+              </strong>
             </p>
           </Container>
         );

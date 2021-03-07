@@ -40,18 +40,18 @@ const AboutMovie = ({ movie, genreList, handleFavMovie, apiKey, baseUrl }) => {
   return abtMov.title ? (
     <div>
       <img
-        src={`https://image.tmdb.org/t/p/w300/${abtMov.poster_path}`}
+        src={undefined ?? `https://image.tmdb.org/t/p/w300/${abtMov.poster_path}`}
         alt={`${abtMov.title}_img`}
       />
       <h2 style={{ color: "#EA8B20" }}>{abtMov.title}</h2>
       <p>
-        <b>Year of Release:</b> {abtMov.release_date.slice(0, 4)}
+        <strong>Year of Release:</strong> {abtMov.release_date.slice(0, 4)}
       </p>
       <p>
-        <b>Overview:</b> {abtMov.overview}
+        <strong>Overview:</strong> {abtMov.overview}
       </p>
       <p>
-        <b>Genres:</b>{" "}
+        <strong>Genres:</strong>{" "}
         {abtMov.genre_ids.map((e) => {
           return genreList.genres.map((m) => {
             return e === m.id ? m.name + " " : null;
@@ -59,27 +59,27 @@ const AboutMovie = ({ movie, genreList, handleFavMovie, apiKey, baseUrl }) => {
         })}
       </p>
       <p>
-        <b>Rating:</b> {abtMov.vote_average}
+        <strong>Rating:</strong> {abtMov.vote_average}
       </p>
-      <b style={{ margin: 0 }}>Rate Movie: </b>
+      <strong style={{ margin: 0 }}>Rate Movie: </strong>
       <Rating movie={abtMov} baseUrl={baseUrl} apiKey={apiKey} />
       <p style={{ textAlign: "center" }}>
-        <b onClick={() => handleFavMovie(abtMov)}>
+        <strong style={{cursor:"pointer"}} onClick={() => handleFavMovie(abtMov)}>
           <FaHeart color={"red"} /> Add to Favorite{" "}
-        </b>
+        </strong>
       </p>
       <p style={{ marginTop: "20px" }}>
-        <b>Actors : </b>
+        <strong>Actors : </strong>
       </p>
       {
         <table border={1} cellPadding={9} style={{ border: "none" }}>
           <thead>
             <tr>
               <td>
-                <b>Name</b>
+                <strong>Name</strong>
               </td>
               <td>
-                <b>Character</b>
+                <strong>Character</strong>
               </td>
             </tr>
           </thead>
