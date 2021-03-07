@@ -17,7 +17,7 @@ const RecommendedMovies = ({ recommendedMovies, handleAbtMov }) => {
           <Container key={movie.id} onClick={() => handleAbtMov(movie)}>
             <Link to="/about">
               <img
-                src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                src={undefined ?? `https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
                 alt={`${movie.title}_img`}
               />
             </Link>
