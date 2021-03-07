@@ -8,7 +8,8 @@ const RecommendedMovies = ({ recommendedMovies, handleAbtMov }) => {
       {recommendedMovies.results.length > 0 ? (
         <h2>Recommended Movies</h2>
       ) : (
-        <h2> No Recommended Movies for this Movie</h2>
+        // <h2> No Recommended Movies for this Movie</h2>
+        null
       )}
       
       {recommendedMovies.results.map((movie) => {
