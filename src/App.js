@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {
@@ -9,9 +9,13 @@ import {
 import AboutMovie from "./components/AboutMovie";
 import Favorites from "./components/FavoriteMovies";
 import SearchMovies from "./components/SearchMovies";
-import Nowplaying from "./components/Nowplaying";
+// import Nowplaying from "./components/Nowplaying";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+import Spinner from "./components/Spinner/Spinner"
+
+const Nowplaying = React.lazy(()=> import('./components/Nowplaying'))
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -93,11 +97,10 @@ function App() {
   return (
     <Router>
       <div className="container">
-
         <Header />
 
         <Switch>
-          <Route path="/favorites" >
+          <Route path="/favorites">
             <Favorites
               favMovie={favMovie}
               setClickedMovie={setClickedMovie}
@@ -106,19 +109,17 @@ function App() {
             />
           </Route>
 
-          <Route path="/about" >
-            
-              <AboutMovie
-                movie={clickedMovie}
-                genreList={genreList}
-                handleFavMovie={handleFavMovie}
-                baseUrl={baseUrl}
-                apiKey={apiKey}
-              />
-          
+          <Route path="/about">
+            <AboutMovie
+              movie={clickedMovie}
+              genreList={genreList}
+              handleFavMovie={handleFavMovie}
+              baseUrl={baseUrl}
+              apiKey={apiKey}
+            />
           </Route>
 
-          <Route path="/" >
+          <Route path="/">
             <Form>
               <Input
                 type="text"
@@ -129,8 +130,7 @@ function App() {
               />
 
               {searchedMovies.length > 0 ? (
-                <Button 
-                onClick={() => window.location.reload()}>
+                <Button onClick={() => window.location.reload()}>
                   Cancel Search
                 </Button>
               ) : (
@@ -142,12 +142,13 @@ function App() {
               handleSetClickedMovie={handleSetClickedMovie}
               handleFavMovie={handleFavMovie}
             />
-
-            <Nowplaying
-              movies={movies}
-              handleSetClickedMovie={handleSetClickedMovie}
-              handleFavMovie={handleFavMovie}
-            />
+            <Suspense fallback={<Spinner />}>
+              <Nowplaying
+                movies={movies}
+                handleSetClickedMovie={handleSetClickedMovie}
+                handleFavMovie={handleFavMovie}
+              />
+            </Suspense>
           </Route>
         </Switch>
         <Footer />
