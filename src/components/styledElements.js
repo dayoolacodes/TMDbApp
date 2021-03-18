@@ -38,6 +38,13 @@ export const Label = styled.label`
   text-align: center;
 `;
 
+export const SideScrollForMobile = styled.div`
+@media all and (max-width: 768px){
+  display:flex;
+  overflow: auto;
+}
+` 
+
 export const Container = styled.div`
   padding: 25px;
   margin: 5%;
@@ -45,12 +52,12 @@ export const Container = styled.div`
   border-radius: 20px;
   box-shadow: 3px 2px 6px #cecece;
   background: whitesmoke;
-  transition: 0.9s ease;
+  box-sizing: border-box;
   text-align: center;
 
 
   :hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     transition: 0.5s ease;
   }
 `; 

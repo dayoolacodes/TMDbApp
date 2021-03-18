@@ -40,7 +40,7 @@ const AboutMovie = ({ movie, genreList, handleFavMovie, apiKey, baseUrl }) => {
   return abtMov.title ? (
     <div>
       <img
-        src={undefined ?? `https://image.tmdb.org/t/p/w300/${abtMov.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w300/${abtMov.poster_path}`?? "undefined"}
         alt={`${abtMov.title}_img`}
       />
       <h2 style={{ color: "#EA8B20" }}>{abtMov.title}</h2>

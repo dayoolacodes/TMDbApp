@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Select, SelectWrapper } from "./NowplayingElements";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
-import { Container } from "../styledElements";
+import { Container, SideScrollForMobile } from "../styledElements";
 
 const Nowplaying = ({ movies, handleSetClickedMovie, handleFavMovie }) => {
   const [order, setOrder] = useState(true);
@@ -30,41 +30,48 @@ const Nowplaying = ({ movies, handleSetClickedMovie, handleFavMovie }) => {
           </Select>
         </div>
       </SelectWrapper>
-      {orderedMovie.map((movie) => {
-        return (
-          <Container
-            key={movie.id}
-            onClick={() => handleSetClickedMovie(movie)}
-          >
-          <div style={{display:"flex", justifyContent:"center"}}>
 
-            <Link to="/about">
-              <img
-                src={undefined ?? `https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
-                alt={`${movie.title}_img`}
-                />
-            </Link>
-                </div>
-            <p>
-              <strong>Title:</strong> {movie.title}
-            </p>
-            <p>
-              <strong>Release Date:</strong> {movie.release_date}
-            </p>
-            <p>
-              <strong>Vote Average:</strong> {movie.vote_average}
-            </p>
-            <p
-              style={{ textAlign: "center" }}
-              onClick={() => handleFavMovie(movie)}
+      <SideScrollForMobile>
+        {orderedMovie.map((movie) => {
+          return (
+            <Container
+              key={movie.id}
+              onClick={() => handleSetClickedMovie(movie)}
             >
-              <strong style={{cursor:"pointer"}}>
-                <FaHeart color={"red"} /> Add to Favorite{" "}
-              </strong>
-            </p>
-          </Container>
-        );
-      })}
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Link to="/about">
+                  <img
+                    src={
+                      undefined ??
+                      `https://image.tmdb.org/t/p/w185/${movie.poster_path}`
+                    }
+                    alt={`${movie.title}_img`}
+                  />
+                </Link>
+              </div>
+
+              <p>
+                <strong>Title:</strong> {movie.title}
+              </p>
+              <p>
+                <strong>Release Date:</strong>
+              </p>
+              <p>{movie.release_date}</p>
+              <p>
+                <strong>Vote Average:</strong> {movie.vote_average}
+              </p>
+              <p
+                style={{ textAlign: "center" }}
+                onClick={() => handleFavMovie(movie)}
+              >
+                <strong style={{ cursor: "pointer" }}>
+                  <FaHeart color={"red"} /> Add to Favorite{" "}
+                </strong>
+              </p>
+            </Container>
+          );
+        })}
+      </SideScrollForMobile>
     </>
   );
 };
