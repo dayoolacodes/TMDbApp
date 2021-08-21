@@ -1,11 +1,7 @@
 import React, { useEffect, useState, Suspense } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import {
-  Button,
-  Form,
-  Input,
-} from "./components/styledElements";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Button, Form, Input } from "./components/styledElements";
 import AboutMovie from "./components/AboutMovie";
 import Favorites from "./components/FavoriteMovies";
 import SearchMovies from "./components/SearchMovies";
@@ -13,9 +9,9 @@ import SearchMovies from "./components/SearchMovies";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import Spinner from "./components/Spinner/Spinner"
+import Spinner from "./components/Spinner/Spinner";
 
-const Nowplaying = React.lazy(()=> import('./components/Nowplaying'))
+const Nowplaying = React.lazy(() => import("./components/Nowplaying"));
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -28,10 +24,9 @@ function App() {
 
   const baseUrl = "https://api.themoviedb.org/3/movie/";
   const apiKey = "a5babee5a188ccf49db8c5cad0da7bf6";
-  
 
   useEffect(() => {
-     let controller = new AbortController();
+    let controller = new AbortController();
     async function fetchNowplayingMovies() {
       try {
         const url = `${baseUrl}now_playing?api_key=${apiKey}&language=en-US&page=1`;
@@ -41,7 +36,7 @@ function App() {
 
         const getGenreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
         const genreRes = await fetch(getGenreUrl, {
-          signal: controller.signal
+          signal: controller.signal,
         });
         const genreData = await genreRes.json();
         setGenreList(genreData);
@@ -49,7 +44,7 @@ function App() {
         const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=1&include_adult=false`;
         if (query) {
           const searchRes = await fetch(searchUrl, {
-            signal: controller.signal
+            signal: controller.signal,
           });
           const searchedData = await searchRes.json();
           setSearchedMovies(searchedData.results);
@@ -60,24 +55,23 @@ function App() {
     }
     fetchNowplayingMovies();
 
-    return ()=> {
+    return () => {
       controller.abort();
-    }
+    };
   }, [query, clickedMovie]);
 
   const handleFavMovie = (m) => {
-    let newMovieAdded = true
+    let newMovieAdded = true;
     const newFavMovie = [...favMovie, m];
-    
+
     Object.values(favMovie).map((e) => {
       if (e.id === m.id) {
-        newMovieAdded = false
+        newMovieAdded = false;
         newFavMovie.pop();
         alert("movie already in favorites");
       }
     });
-    if(newMovieAdded)
-    alert("movie added to favorites");
+    if (newMovieAdded) alert("movie added to favorites");
     setFavMovie(newFavMovie);
     setClickedFav(!clickedFav);
   };
