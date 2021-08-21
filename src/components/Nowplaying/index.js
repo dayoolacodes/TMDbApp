@@ -42,8 +42,7 @@ const Nowplaying = ({ movies, handleSetClickedMovie, handleFavMovie }) => {
                 <Link to="/about">
                   <img
                     src={
-                      undefined ??
-                      `https://image.tmdb.org/t/p/w185/${movie.poster_path}`
+                      `https://image.tmdb.org/t/p/w185/${movie.poster_path}`?? "undefined"
                     }
                     alt={`${movie.title}_img`}
                   />

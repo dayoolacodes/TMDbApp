@@ -68,7 +68,7 @@ function App() {
   const handleFavMovie = (m) => {
     let newMovieAdded = true
     const newFavMovie = [...favMovie, m];
-    // eslint-disable-next-line array-callback-return
+    
     Object.values(favMovie).map((e) => {
       if (e.id === m.id) {
         newMovieAdded = false

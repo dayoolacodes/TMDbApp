@@ -39,10 +39,10 @@ export const Label = styled.label`
 `;
 
 export const SideScrollForMobile = styled.div`
-@media all and (max-width: 768px){
+/* @media all and (max-width: 768px){
   display:flex;
   overflow: auto;
-}
+} */
 ` 
 
 export const Container = styled.div`
