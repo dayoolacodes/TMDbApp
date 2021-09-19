@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Select, SelectWrapper } from "./NowplayingElements";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
-import { Container, SideScrollForMobile } from "../styledElements";
+import { Container } from "../styledElements";
 
 const Nowplaying = ({ movies, handleSetClickedMovie, handleFavMovie }) => {
   const [order, setOrder] = useState(true);
@@ -31,7 +31,7 @@ const Nowplaying = ({ movies, handleSetClickedMovie, handleFavMovie }) => {
         </div>
       </SelectWrapper>
 
-      <SideScrollForMobile>
+      <>
         {orderedMovie.map((movie) => {
           return (
             <Container
@@ -70,7 +70,7 @@ const Nowplaying = ({ movies, handleSetClickedMovie, handleFavMovie }) => {
             </Container>
           );
         })}
-      </SideScrollForMobile>
+      </>
     </>
   );
 };

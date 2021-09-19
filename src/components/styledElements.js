@@ -38,12 +38,12 @@ export const Label = styled.label`
   text-align: center;
 `;
 
-export const SideScrollForMobile = styled.div`
-/* @media all and (max-width: 768px){
-  display:flex;
-  overflow: auto;
-} */
-` 
+// export const SideScrollForMobile = styled.div`
+// @media all and (max-width: 768px){
+//   display:flex;
+//   overflow: auto;
+// }
+// ` 
 
 export const Container = styled.div`
   padding: 25px;

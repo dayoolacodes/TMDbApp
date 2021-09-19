@@ -70,6 +70,7 @@ function App() {
         newFavMovie.pop();
         alert("movie already in favorites");
       }
+      return ""
     });
     if (newMovieAdded) alert("movie added to favorites");
     setFavMovie(newFavMovie);
