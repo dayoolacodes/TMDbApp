@@ -68,7 +68,7 @@ function App() {
       if (e.id === m.id) {
         newMovieAdded = false;
         newFavMovie.pop();
-        alert("movie already in favorites");
+        alert(`${e?.title} already in favorites`);
       }
       return ""
     });
@@ -83,9 +83,9 @@ function App() {
 
   const handleDeleteFav = (movie) => {
     const filteredMovie = favMovie.filter((e) => {
+      alert(`deleted ${e?.title} from favorites`);
       return e.id !== movie.id;
     });
-    alert("movie deleted!");
     setFavMovie(filteredMovie);
   };
 
